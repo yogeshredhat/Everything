@@ -70,7 +70,7 @@ sudo systemctl restart ssh
 
 
 
-
+Now login server from your laptop like      ssh test
  
  
 
