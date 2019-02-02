@@ -1,1 +1,77 @@
+Going to Access my ubuntu server 10.191.5.179 th server from my laptop without password
+
+Laptop ip 192.168.2.....
+
+Server ip 10.191.5.179
+
+Laptop, Generate the Client’s SSH Key Linux Machines
+----------------------------------------------------
+
+ssh-keygen -t rsa
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/richard/.ssh/id_rsa): Press Enter
+Created directory '/home/richard/.ssh'.
+Enter passphrase (empty for no passphrase):Press Enter
+Enter same passphrase again:Press Enter
+Your identification has been saved in /home/richard/.ssh/id_rsa.
+Your public key has been saved in /home/richard/.ssh/id_rsa.pub.
+The key fingerprint is:Press Enter
+SHA256:l6lb+u65p9CHd3IhGFL5kLTdOyC/tzmiq12JauWfvJo richard@ubuntu1710
+The key's randomart image is:
++---[RSA 2048]----+
+|         .oo     |
+|         .+o .   |
+|        . +oo .  |
+|         . B.. . |
+|        S = o +  |
+|         +.o + o |
+|        oo= B +  |
+|        .B.Bo*.o |
+|       .==EO=oo. |
++----[SHA256]-----+
+
+Copy the client SSH key to the server
+-------------------------------------
+
+ssh-copy-id  ubuntu@10.191.5.179
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'ubuntu@10.191.5.179'"
+and check to make sure that only the key(s) you wanted were added.  
+
+You can See your key in server /home/ubuntu/.ssh/authorized_keys file
+
+Add Server details under .ssh config file
+------------------------------------------
+
+ Host test
+ HostName 10.191.5.179
+ User ubuntu
+ Port 22
+ IdentityFile /home/yogesh/.ssh/id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes
+ 
+ Server Side
+ -----------
+ 
+ sudo vim /etc/ssh/sshd_config
+ 
+ RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile    %h/.ssh/authorized_keys
+PasswordAuthentication no
+
+
+
+sudo systemctl restart ssh
+
+
+
+
+ 
+ 
+
 
