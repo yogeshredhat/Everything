@@ -33,17 +33,16 @@ Shell Script
 
 #!/bin/bash
 
-# replace with sender's email address
+
 sender="yogeshredhat14@gmail.com"
 
-# replace with recipient's email address
+
 recipient="yogesh.aseervatham@tarams..com"
 
 time=$(date)
 
 if [ "$PAM_TYPE" != "close_session" ]; then
 
-# replace with host name
 
  host="ubuntu-server"
  
