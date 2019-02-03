@@ -12,6 +12,8 @@ echo "ALERT : Root Shell Access on: $(date) $(who)" | sendemail -f yogeshredhat1
 
 
 Ubuntu/Debian
+-------------
+
 Open the file ~/.bashrc in a text editor.
 
 Append the following lines:
