@@ -26,6 +26,36 @@ NOW=$(date +"%e %b %Y, %a %r")
 
 sudo echo 'ALERT - Root Shell Access (ServerName) on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d'(' -f2 | cut -d')' -f1`" yogesh.aseervatham@tarams.com
 
+
+
+Shell Script
+----------------
+
+#!/bin/bash
+
+# replace with sender's email address
+sender="yogeshredhat14@gmail.com"
+
+# replace with recipient's email address
+recipient="yogesh.aseervatham@tarams..com"
+
+time=$(date)
+
+if [ "$PAM_TYPE" != "close_session" ]; then
+
+# replace with host name
+
+ host="ubuntu-server"
+ 
+ subject="SSH Login: $PAM_USER from $PAM_RHOST on $host at $time"
+
+  message="SSH login $PAM_USER from $PAM_RHOST at $time on $host"
+  
+ echo "$message" | mail.mailutils -r "$sender" -s "$subject" "$recipient"
+ 
+fi
+
+
 -------------------------------------------------------------------------------------------------
 free ssl for domain
 ---------------------
