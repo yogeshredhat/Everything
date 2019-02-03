@@ -10,6 +10,17 @@ apt-get install libio-socket-ssl-perl libnet-ssleay-perl sendmail
    
 echo "ALERT : Root Shell Access on: $(date) $(who)" | sendemail -f yogeshredhat14@gmail.com -t prashant@fcoos.net -u subject -m "Alert: Root Access from $(who) -f1" -s smtp.gmail.com:587 -o tls=yes -xu yogeshredhat14@gmail.com -xp yourpassword 
 
+
+Ubuntu/Debian
+Open the file ~/.bashrc in a text editor.
+
+Append the following lines:
+
+IP="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
+HOSTNAME=$(hostname)
+NOW=$(date +"%e %b %Y, %a %r")
+echo 'Someone from '$IP' logged into '$HOSTNAME' on '$NOW'.' | mail -s 'SSH Login Notification' YOUR_EMAIL_ADDRESS
+
 -------------------------------------------------------------------------------------------------
 free ssl for domain
 ---------------------
