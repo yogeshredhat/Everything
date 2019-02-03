@@ -4,8 +4,10 @@ All Configuration
 
 ssh root login email alert
 
-apt-get install libio-socket-ssl-perl libnet-ssleay-perl sendemail
+apt-get install libio-socket-ssl-perl libnet-ssleay-perl sendmail
+
    vim /root/.bashrc
+   
 echo "ALERT : Root Shell Access on: $(date) $(who)" | sendemail -f yogeshredhat14@gmail.com -t prashant@fcoos.net -u subject -m "Alert: Root Access from $(who) -f1" -s smtp.gmail.com:587 -o tls=yes -xu yogeshredhat14@gmail.com -xp yourpassword 
 
 -------------------------------------------------------------------------------------------------
