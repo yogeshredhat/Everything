@@ -17,9 +17,12 @@ Open the file ~/.bashrc in a text editor.
 Append the following lines:
 
 IP="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
+
 HOSTNAME=$(hostname)
+
 NOW=$(date +"%e %b %Y, %a %r")
-echo 'Someone from '$IP' logged into '$HOSTNAME' on '$NOW'.' | mail -s 'SSH Login Notification' YOUR_EMAIL_ADDRESS
+
+sudo echo 'ALERT - Root Shell Access (ServerName) on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d'(' -f2 | cut -d')' -f1`" yogesh.aseervatham@tarams.com
 
 -------------------------------------------------------------------------------------------------
 free ssl for domain
