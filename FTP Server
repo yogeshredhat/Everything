@@ -1,0 +1,59 @@
+ftp Server
+-----------
+apt-get install vsftpd -y
+
+adduser --home=/data/ftp connectm
+
+vim /etc/vsftpd.conf
+
+listen=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+dirmessage_enable=YES
+use_localtime=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+xferlog_std_format=YES
+ascii_upload_enable=YES
+ascii_download_enable=YES
+chroot_local_user=YES
+local_root=/data/ftp
+pasv_min_port=50000
+pasv_max_port=51000
+userlist_enable=YES
+tcp_wrappers=YES
+userlist_file=/etc/vsftpd.userlist
+userlist_deny=NO
+allow_writeable_chroot=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable=NO
+pasv_enable=YES
+pasv_promiscuous=YES
+pasv_address=34.240.134.237
+
+vim /etc/vsftpd.userlist
+
+connectm
+
+setfacl -m u:connectm:rwx /data/ftp
+
+setfacl -m g:ftp:rwx /data/ftp
+
+chmod 775 /data/ftp
+
+systemctl restart vsftpd
+
+systemctl status vsftpd
+
+/etc/init.d/ufw stop
+
+/etc/init.d/ufw status
+
+Add AWS inbound rules 20,21,50000-51000 for tcp.
+
+
+
