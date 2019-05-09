@@ -33,7 +33,7 @@ rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
 ssl_enable=NO
 pasv_enable=YES
 pasv_promiscuous=YES
-pasv_address=34.240.134.237
+pasv_address=serveriphere
 
 vim /etc/vsftpd.userlist
 
